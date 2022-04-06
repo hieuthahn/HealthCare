@@ -5,11 +5,11 @@ on:
       - 'bugfix/**'
 jobs:
   auto-pull-request-develop-bugfix:
-    name: bugfix => master
+    name: bugfix => main
     runs-on: ubuntu-latest
     steps:
       - name: pull-request-action
         uses: vsoch/pull-request-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PULL_REQUEST_BRANCH: "master"
+          PULL_REQUEST_BRANCH: "main"

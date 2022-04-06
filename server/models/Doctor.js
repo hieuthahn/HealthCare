@@ -1,10 +1,10 @@
 const mongoose = require("mongoose")
-const Schema = new mongoose.Schema()
+const Schema = mongoose.Schema
 
 const DoctorSchema = new Schema({
     doctorId: {
-        type: String,
-        required: true,
+        type: Schema.Types.ObjectId,
+        ref: "users",
     },
     priceId: {
         type: Number,

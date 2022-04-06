@@ -30,6 +30,9 @@ app.use(express.json())
 app.use(cors())
 
 app.use("api/auth", authRouter)
+app.get("/api/auth/login", (req, res) => {
+    res.send("hello")
+})
 
 const PORT = process.env.PORT || 8096
 

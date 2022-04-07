@@ -2,9 +2,10 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
-    userName: {
+    username: {
         type: String,
         required: true,
+        unique: true,
     },
     password: {
         type: String,
@@ -25,33 +26,24 @@ const UserSchema = new Schema({
     gender: {
         type: String,
         required: true,
-        enum: {
-            M: "Nam",
-            F: "Nữ",
-            O: "Khác",
-        },
+        enum: ["M", "F", "O"],
     },
     roleId: {
         type: String,
         enum: ["R1", "R2", "R3"],
     },
     phoneNumber: {
-        type: Number,
+        type: String,
     },
     positionId: {
         type: String,
-        enum: {
-            P0: "Bác sĩ",
-            P1: "Thạc sĩ",
-            P2: "Tiến sĩ",
-            P3: "Phó giáo sư",
-            P4: "Giáo sư",
-        },
+        enum: ["P0", "P1", "P2", "P3", "P4"],
     },
     image: {
         type: Buffer,
         contentType: String,
     },
+    createAt: { type: Date, default: Date.now() },
 })
 
 module.exports = mongoose.model("users", UserSchema)

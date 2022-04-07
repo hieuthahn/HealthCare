@@ -2,6 +2,7 @@ require("dotenv").config()
 const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
+const bodyParser = require("body-parser")
 
 const authRouter = require("./routes/auth")
 
@@ -27,12 +28,15 @@ connectDB()
 const app = express()
 
 app.use(express.json())
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
+// parse application/json
+app.use(bodyParser.json())
+app.use(bodyParser.json({ type: "application/vnd.api+json" }))
+
 app.use(cors())
 
-app.use("api/auth", authRouter)
-app.get("/api/auth/login", (req, res) => {
-    res.send("hello")
-})
+app.use("/api/auth", authRouter)
 
 const PORT = process.env.PORT || 8096
 

@@ -1,1 +1,17 @@
-GET http://localhost:8686/
+GET http://localhost:8686/api/auth/
+
+###
+
+POST http://localhost:8000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "hieu3",
+    "password": "12343",
+    "email": "hieu@gmail.com",
+    "fullName": "hieu nguyen thanh",
+    "address": "Hà Nội",
+    "gender": "F"
+}
+
+###
